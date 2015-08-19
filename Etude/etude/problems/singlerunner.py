@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from etude.constants import *
 import etude.utils.sysutils as sysutils
-import etude.utils.utils as utils
+import etude.utils.futils as futils
 import etude.problems.partitioning as par
 import os
 
@@ -50,7 +50,7 @@ def main(argsDict):
     print 'CFLAUNCHER MULTI ################################################' 
     generateDependencies(argsDict)
     JAVA_ARGS = ['-jar']
-    args = utils.computeArgs(CFLAUNCHER_JAR,argsDict,exe_args=JAVA_ARGS)
+    args = futils.computeArgs(CFLAUNCHER_JAR,argsDict,exe_args=JAVA_ARGS)
     print 'ZISI ARGS',args
     result = sysutils.jarWrapper(*args)  
     print result[-20:]

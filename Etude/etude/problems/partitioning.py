@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from etude.exceptions import *
-import etude.utils.utils as utils
+import etude.utils.futils as futils
 import re
 import random
 import copy
@@ -57,7 +57,7 @@ def divEquNaive(infilename,outfilename, nbAgents):
     outfilename = outfilename+'.gra.part.'+str(nbAgents)
     outfile = open(outfilename, 'w')
     i = 0
-    for c in utils.chunks(lines, sizeAgent):
+    for c in futils.chunks(lines, sizeAgent):
         print c
         for line in c :
             print line, i
@@ -78,10 +78,10 @@ def create_a_FileSol_wit_a_TP_distribution_naiveShort(file_sol,perc, seuilMin=1)
     pas RANDOM !! on prend les n premiers plus courtes dans l'ordre d'apparition !
     '''
     copy_lines = copy.deepcopy(file_sol.lines)
-    clauses = [line for line in copy_lines if isinstance(line,utils.Clause)]
-    otherlines = [line for line in copy_lines if not isinstance(line,utils.Clause)]
+    clauses = [line for line in copy_lines if isinstance(line,futils.Clause)]
+    otherlines = [line for line in copy_lines if not isinstance(line,futils.Clause)]
     
-    clauses.sort(cmp=utils.comp_length_clauses)
+    clauses.sort(cmp=futils.comp_length_clauses)
     
     nbTP = perc/100.*len(clauses)      
     for index, clause in enumerate(clauses) :
@@ -93,7 +93,7 @@ def create_a_FileSol_wit_a_TP_distribution_naiveShort(file_sol,perc, seuilMin=1)
     distributed_lines = clauses + otherlines   #on ne sort pas car on s'en fout, çaa sera fait après
     distrib_name =  '_TPnaiveshortdist_per'+str(perc)+'_'+'seuil'+str(seuilMin)
     filename = file_sol.filename + distrib_name
-    return utils.FileSol(file_sol.path,filename = filename,lines=distributed_lines), int(nbTP)
+    return futils.FileSol(file_sol.path,filename = filename,lines=distributed_lines), int(nbTP)
 
 def create_dcf_Agent_distribution(file_sol,nbAgents,method = 'naive_eq',outpath = None):
     '''
@@ -108,35 +108,35 @@ def create_dcf_Agent_distribution(file_sol,nbAgents,method = 'naive_eq',outpath 
     if method == 'naive_eq':
         dcf_lines = naive_eq(file_sol,nbAgents)
         filename += '_naiveEq'+str(nbAgents)
-        return utils.FileDCF(outpath,filename,lines= dcf_lines )
+        return futils.FileDCF(outpath,filename,lines= dcf_lines )
     elif method == 'kmetis':
         #execute the kmetis trnasifmantion
         filename += '_kmet'+str(nbAgents)
-        outpath, outfilename = utils.generate_kmet_distribution_simple(nbAgents, file_sol.path, file_sol.filename, outfile_path=outpath, outfile_name=filename)
-        res = utils.FileDCF(outpath, outfilename)
+        outpath, outfilename = futils.generate_kmet_distribution_simple(nbAgents, file_sol.path, file_sol.filename, outfile_path=outpath, outfile_name=filename)
+        res = futils.FileDCF(outpath, outfilename)
         res.load()
         return res
     '''
     elif method == 'naive_indent':
         dcf_lines = naive_indent(file_sol,nbAgents)
         filename += '_naiveEq'+str(nbAgents)
-        return utils.FileDCF(outpath,filename,lines= dcf_lines )
+        return futils.FileDCF(outpath,filename,lines= dcf_lines )
     '''
         
 def naive_eq(file_sol,nbAgents):    
     copy_lines = copy.deepcopy(file_sol.lines)
     
-    clauses = [line for line in copy_lines if isinstance(line,utils.Clause)]
+    clauses = [line for line in copy_lines if isinstance(line,futils.Clause)]
     pf = [line for line in copy_lines if 'pf(' in line.data]
     comments=[line for line in copy_lines if line.data.startswith('%')]
     
-    clauses.sort(cmp=utils.comp_index)
+    clauses.sort(cmp=futils.comp_index)
     sizeAgent = len(clauses)/nbAgents     
     agent_clauses = []
-    for indexAgent,c in enumerate(utils.chunks(clauses, sizeAgent)):
+    for indexAgent,c in enumerate(futils.chunks(clauses, sizeAgent)):
         if not indexAgent >= nbAgents :
             #on rajoute un agent que si c'est légal                 
-            new_agent_line = utils.IndexedLine(0,'\nagent('+str(indexAgent) +').\n')
+            new_agent_line = futils.IndexedLine(0,'\nagent('+str(indexAgent) +').\n')
             agent_clauses.append(new_agent_line)
         for line in c :
             agent_clauses.append(line)         
@@ -222,7 +222,7 @@ def create_a_FileSol_wit_a_TPdistribution_for_each_agent(file_dcf,percTotal, seu
     nbAgents = 0
     
     for line in copy.deepcopy(file_dcf.lines) :
-        if isinstance(line, utils.Clause):
+        if isinstance(line, futils.Clause):
             if currentAgent == None:
                 raise Exception ('wtf on a des cnf dans un dcf alors quon a pas declaé d agents !!')
             currentAgentClauses.append(line)
@@ -256,7 +256,7 @@ def create_a_FileSol_wit_a_TPdistribution_for_each_agent(file_dcf,percTotal, seu
         if method == 'random':
             indexesTP = random.sample(range(len(agentClauses)), sizesample)
         elif method == 'short':
-            agentClauses.sort(cmp = utils.comp_length_clauses)
+            agentClauses.sort(cmp = futils.comp_length_clauses)
             indexesTP = range(sizesample)
         #prendre les npremeirs
         #permet de reset et de controler les vertiables parametres
@@ -282,8 +282,8 @@ def create_a_FileSol_wit_a_TPdistribution_for_each_agent(file_dcf,percTotal, seu
         agentClausesIndex = (agentClausesIndex + 1 )% len(agentClauses)
         
 
-    sol_lines = comments + utils.merge_lists(allAgentsClauses) + pf
+    sol_lines = comments + futils.merge_lists(allAgentsClauses) + pf
     if outfilename == None:
         outfilename = file_dcf.filename+'_TPuniform'+method+'dist_per'+str(percTotal)+'_'+'seuil'+str(seuilMin)
-    return utils.FileSol(file_dcf.path,outfilename,ext ='.sol', lines = sol_lines )
+    return futils.FileSol(file_dcf.path,outfilename,ext ='.sol', lines = sol_lines )
     

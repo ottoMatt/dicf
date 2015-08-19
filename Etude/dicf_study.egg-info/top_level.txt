@@ -1,3 +1,0 @@
-etude
-etude/problems
-etude/utils

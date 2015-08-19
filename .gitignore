@@ -16,6 +16,9 @@
 
 
 #generated and problems Files
+Etude/dist/
+Etude/build/
+
 ################
 Etude/Problems/
 *.log

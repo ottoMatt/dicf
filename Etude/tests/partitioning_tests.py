@@ -5,7 +5,7 @@ import os
 from nose.tools import *
 from etude.problems.partitioning import *
 from etude.constants import *
-from etude.utils.utils import *
+from etude.utils.futils import *
 TEST_PATH = TEMP_RSRC_PATH+'tests/partitioning/'
 fDCF = 'glucolysis_kmet4'
 fSol = 'glucolysis'

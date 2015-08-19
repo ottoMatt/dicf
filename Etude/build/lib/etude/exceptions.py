@@ -1,3 +1,0 @@
-class EmptyAgentException(Exception):
-    pass
-
