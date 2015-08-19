@@ -15,10 +15,12 @@
 
 
 
-#generated and problems Files
+#build folders
 Etude/dist/
 Etude/build/
+dicf_study.egg-info/
 
+#generated and problems Files
 ################
 Etude/Problems/
 *.log
@@ -34,6 +36,7 @@ Etude/Problems/
 .project
 .metadata
 .gradle
+*.spyderworkspace
 
 *.metadata
 Mod/.metadata/
