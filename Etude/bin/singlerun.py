@@ -32,7 +32,7 @@ def define_arguments():
                         help = 'var=varSuffix  use the variant with given suffix \
                         (should begin by _).')
     
-    parser.add_argument('--par', choices=['naive_eq', 'naive_indent','kmetis_hybrid','kmetis'], default = 'kmetis',
+    parser.add_argument('--par', choices=['naive_eq','kmetis'], default = 'kmetis',
                         help = 'type de partitionnement \n\
                         naive_eq= divise les clauses equitablement (ne regarde pas si top_clauses ou axiom) \n\
                         naive_indent= divise les clauses selon l indentation du fichier sol d origine (pareil que dessus)\n\
@@ -43,6 +43,7 @@ def define_arguments():
                         help = 'distSuffix  use the distribution with given suffix (should begin by \"_\").");')
     parser.add_argument('--csq',
                         help = 'outputfilename for csq')
+    parser.add_argument('--replace', action='store_true')
             
     return parser
 parser = define_arguments()

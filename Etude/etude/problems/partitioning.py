@@ -126,6 +126,7 @@ def create_dcf_Agent_distribution(file_sol,nbAgents,method = 'naive_eq',outpath 
 def naive_eq(file_sol,nbAgents):    
     copy_lines = copy.deepcopy(file_sol.lines)
     
+    #nan ! trop de comprehension ist tue la comprehensio n ^^ (en fait potentiel err car non exclusif)
     clauses = [line for line in copy_lines if isinstance(line,futils.Clause)]
     pf = [line for line in copy_lines if 'pf(' in line.data]
     comments=[line for line in copy_lines if line.data.startswith('%')]
