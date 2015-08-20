@@ -2,7 +2,11 @@
 import argparse
 import os
 import etude.problems.singlerunner as singlerunner
-
+"""
+ici les arguments ne sont pas tout a fait les memes que dans les autres 
+problemes : ex = infile contient le path, alors que dans les autres cas, 
+il est séparé avec infile_path
+"""
 
 def define_arguments():    
     parser = argparse.ArgumentParser(description='Process to test the DCIF.')
