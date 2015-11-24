@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: rapport.aux
+The style file: plain.bst
+Database file #1: /media/magma/DONNEES/bibtex/stage.bib.bib
+Warning--empty journal in Bourgne2012
+Warning--there's a number but no volume in Bourgne2012
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            527 strings with 4752 characters,
+and the built_in function-call counts, 1537 in all, are:
+= -- 157
+> -- 67
+< -- 1
++ -- 26
+- -- 22
+* -- 118
+:= -- 252
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 23
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 53
+empty$ -- 114
+format.name$ -- 22
+if$ -- 316
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 20
+preamble$ -- 1
+purify$ -- 19
+quote$ -- 0
+skip$ -- 40
+stack$ -- 0
+substring$ -- 127
+swap$ -- 12
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 2
+while$ -- 17
+width$ -- 5
+write$ -- 45
+(There were 2 warnings)

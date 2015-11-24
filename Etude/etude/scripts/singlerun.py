@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+import my_path #all scripts must import this
 import argparse
 import os
-import etude.problems.singlerunner as singlerunner
+import etude.experiments.singlerunner as singlerunner
 
 
 """

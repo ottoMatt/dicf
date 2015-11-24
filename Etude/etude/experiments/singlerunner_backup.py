@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
-# TODO rajouter le logging dedans (avec un paramètre en entrée,
+# back up the 14th of septemberee, 8:11
+"""
+TODO rajouter le logging dedans (avec un paramètre en entrée,
 # sinon génère automatiquement un fichier singleRun.log et écrit sur le stdout)
-# réécrire le main ici dans une classe.
+# réécrire le main ici dans une classe experiment
+"""
 from etude.constants import *
 import etude.utils.sysutils as sysutils
 import etude.utils.futils as futils
 import etude.problems.partitioning as par
 import os
-from etude.utils.experiment import Experiment
+from etude.experiments.experiment import Experiment
+from etude.utils.mylogging import LoggedClass
 
 
-def generateFile(outfile, fun, replace=False, *funargs):
+def generate_file(outfile, fun, replace=False, *funargs):
     '''
     on overrride le replace des fonctions existantes en regardant nous-même
     si le outfile existe et si replace alors le suppri,er avant d'executer
@@ -30,12 +34,18 @@ def generateFile(outfile, fun, replace=False, *funargs):
     return res
 
 
-def generateDependencies(argsDict):
+def generate_variant(argsDict, java_args=[]):
+    args = java_args+[MAKESOLVARIANT_JAR]+['-method='+argsDict['methodVar'],'-len='+argsDict['length'],'-d='+argsDict['depth'],argsDict['infile_path']+argsDict['infile'], argsDict['outfile']]
+    log = jarWrapper(*args)  
+    addToLog(log_file,log)
+
+
+def generate_dependencies(argsDict):
     # if dist is passed, one should expect the file to be already generated
     if argsDict['dist'] != None:
         return
     if (argsDict['numagent'] == None) or (argsDict['numagent'] == 1):
-        print 'MONO AGENT, by default'
+        # 'MONO AGENT, by default'
         # check if method basée est bien celle la : facultatif
         if argsDict['method'] != 'SOLAR-Inc-Carc':
             print 'Methode Mono Agent non passée, mis par défaut en mode Mono'
@@ -46,7 +56,7 @@ def generateDependencies(argsDict):
             dist_suffix = '_kmet' + str(argsDict['numagent'])
             argsDict['dist'] = dist_suffix
 
-            print 'buildGRAPH ################################################'
+            # buildGraph
             outfile = temp_graph_filename + '.gra'
             args = ['-jar', BUILDGRAPH_JAR,
                     argsDict['infile'], temp_graph_filename]
@@ -54,15 +64,14 @@ def generateDependencies(argsDict):
             generateFile(outfile, fun, replace=argsDict['replace'], *args)
 
             # kMetis
-            print 'kMETIS ################################################'
             outfile = temp_graph_filename + \
                 '.gra.part.' + str(argsDict['numagent'])
             args = [KMETIS_EX, temp_graph_filename +
                     '.gra', str(argsDict['numagent'])]
             fun = sysutils.exWrapper
             generateFile(outfile, fun, replace=argsDict['replace'], *args)
+
             # graph2DCF
-            print 'graph2DCF ################################################'
             outfile = argsDict['infile'][:-4] + dist_suffix + '.dcf'
             args = ['-jar',
                     GRAPH2DCF_JAR,
@@ -76,7 +85,7 @@ def generateDependencies(argsDict):
             dist_suffix = '_naiveEq' + str(argsDict['numagent'])
             argsDict['dist'] = dist_suffix
 
-            print 'naivePARTITIONING ################################################'
+            # naivePARTITIONING
             outfile = temp_graph_filename + \
                 '.gra.part.' + str(argsDict['numagent'])
             args = [
@@ -85,7 +94,6 @@ def generateDependencies(argsDict):
             generateFile(outfile, fun, replace=argsDict['replace'], *args)
 
             # graph2DCF
-            print 'graph2DCF ################################################'
             outfile = argsDict['infile'][:-4] + dist_suffix + '.dcf'
             args = ['-jar',
                     GRAPH2DCF_JAR,
@@ -95,22 +103,38 @@ def generateDependencies(argsDict):
             result = sysutils.jarWrapper
             generateFile(outfile, fun, replace=argsDict['replace'], *args)
         elif argsDict['par'] == 'kmetis_hybrid':
-            pass  # not yet implemented
+            raise NotImplementedError()  # not the right exception...
 
 
-class SingleRunner(Experiment):
+class SingleRunner(Experiment):  # a single runner is an experiment !!
+    """
+    generate Dependencies -> computeArgs -> lauanch process 
+    log through the different stages... decompose functions in a flat way
 
-    def __init__(self, logname,):
+    when finished, might need to refactor this inside experiment
+
+    we might create a module handling dependencies operations and initialize 
+    a logger , allows to externalize this process and to have extensibility if needed 
+    (only have to inherit and add a little case for new dependency)
+    """
+    def __init__(self, logname):
+        pass
+
+    @LoggedClass()
+    def generateDependencies():
+        pass
 
 
 def main(argsDict):
-    print 'CFLAUNCHER MULTI ################################################'
-    generateDependencies(argsDict)
     JAVA_ARGS = ['-jar']
+
+    # TODO :here create an object experiment
+    if argsDict['nogen']:
+        generateDependencies(argsDict)
+
     args = futils.computeArgs(CFLAUNCHER_JAR, argsDict, exe_args=JAVA_ARGS)
-    print 'ZISI ARGS', args
     result = sysutils.jarWrapper(*args)
-    print result[-20:]
+
     log_f = [GEN_PATH, os.path.basename(
         argsDict['infile'])[:-4], argsDict['var'], argsDict['method']]
     log_filename = "".join(log_f)

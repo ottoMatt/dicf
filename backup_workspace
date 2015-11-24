@@ -1,0 +1,565 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"genera",
+				"generate_with_args	function"
+			],
+			[
+				"__m",
+				"__name__	class"
+			],
+			[
+				"gen",
+				"genFileDecorator	function"
+			],
+			[
+				"naive_",
+				"naive_short"
+			],
+			[
+				"infile",
+				"infile_path"
+			],
+			[
+				"form",
+				"formatter	statement"
+			],
+			[
+				"No",
+				"NotImplementedError	class"
+			],
+			[
+				"NO",
+				"NotImplemented	class"
+			],
+			[
+				"None",
+				"None	class"
+			],
+			[
+				"save",
+				"save-only"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "etude.sublime-project",
+			"settings":
+			{
+				"buffer_size": 445,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"task",
+				"Tasks: New document"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"syntxa ja",
+				"Set Syntax: Java"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"litin",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"packagere",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package user",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"to",
+				"View: Toggle Side Bar"
+			],
+			[
+				"tas",
+				"Tasks: Complete"
+			],
+			[
+				"ide",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ident",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"lintin",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"tes",
+				"Snippet: self"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"snipp",
+				"Set Syntax: Regular Expressions (Python)"
+			],
+			[
+				"sni",
+				"Snippet: if __name__ == '__main__'"
+			],
+			[
+				"toggle",
+				"View: Toggle Minimap"
+			],
+			[
+				"side bar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sort ",
+				"Sort Lines"
+			],
+			[
+				"sideba",
+				"View: Toggle Side Bar"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"synta",
+				"Set Syntax: OCaml"
+			],
+			[
+				"tests ",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"auto",
+				"Anaconda: Run Project Tests"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"sublime.log_commands(True)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/magma/projects/dicf/Etude",
+		"/home/magma/projects/dicf/Etude/etude",
+		"/home/magma/projects/dicf/Etude/model",
+		"/home/magma/projects/dicf/Etude/tests"
+	],
+	"file_history":
+	[
+		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner_backup.py",
+		"/home/magma/projects/dicf/Etude/tests/argsGenerator_test.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/argsGenerator.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/futils.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/sysutils.py",
+		"/home/magma/generalTasks",
+		"/home/magma/general.TODO",
+		"/home/magma/projects/dicf/Etude/bin/singlerun.py",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/Default (Linux).sublime-keymap",
+		"/home/magma/projects/dicf/project_dicf.TODO",
+		"/home/magma/projects/dicf/visualisations/statsPresentation_old.ipynb",
+		"/home/magma/projects/dicf/Etude/tests/template_test.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/mylogging.py",
+		"/home/magma/projects/dicf/Etude/etude/experiments/experiment.py",
+		"/home/magma/projects/dicf/Etude/etude/problems/partitioning.py",
+		"/home/magma/projects/dicf/Etude/root.stderr.log",
+		"/home/magma/projects/dicf/Etude/tests/logging_module_test.py",
+		"/home/magma/projects/dicf/Etude/.spyderproject",
+		"/home/magma/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/magma/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/magma/projects/dicf/Etude/etude/constants.py",
+		"/home/magma/projects/dicf/Etude/etude/exceptions.py",
+		"/home/magma/projects/dicf/Etude/tests/partitioning_tests.py",
+		"/home/magma/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/Theme - Default/Default.sublime-theme",
+		"/opt/sublime_text/Packages/Theme - Default.sublime-package",
+		"/home/magma/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/PlainTasks (Linux).sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/User/PlainTasks.sublime-settings",
+		"/home/magma/projects/dicf/my-theme.sublime-project",
+		"/home/magma/projects/dicf/Etude/etude/problems/__init__.py",
+		"/home/magma/projects/dicf/Bio_analysis_2-Copy1.ipynb",
+		"/home/magma/projects/dicf/Etude/Clique_2.xml",
+		"/home/magma/projects/dicf/Etude/etude/utils/experiment.py",
+		"/home/magma/projects/dicf/Mod/Solar-Bourgne/doc/org/nabelab/solar/DebugTypes.html",
+		"/home/magma/test.py",
+		"/home/magma/.config/sublime-text-3/Packages/AdvancedNewFile/README.md",
+		"/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/magma/projects/dicf/Etude/etude/problems/singlerunner.py"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"main_generate",
+			"testFileDecorator",
+			"class",
+			"there",
+			"    \n",
+			"balanced",
+			"partitions",
+			"\"\"\")",
+			"    \n",
+			"variant",
+			"argument",
+			"parser",
+			"argument",
+			"Argument",
+			"argument",
+			"msg",
+			"argsDict_mono",
+			"etude",
+			"alt+up",
+			"csts",
+			"constants",
+			"220",
+			"alt+shift",
+			"ctrl+alt+shift",
+			"alt+shift",
+			"select_all",
+			"},\n",
+			"keys",
+			"ctrl+1",
+			"up",
+			"set_layou",
+			"setlayout",
+			"screen",
+			"un",
+			"np",
+			"arange",
+			"print",
+			"\nres ",
+			"= ",
+			"res",
+			")\n",
+			"outfile",
+			"outfile_path",
+			"yes",
+			"NOT",
+			"not",
+			"RES",
+			"NOT",
+			"\"\n",
+			"\n\"",
+			"THE NAME",
+			"THE",
+			"THE NAME\n",
+			"THE",
+			"NAME",
+			"res",
+			"def",
+			"s",
+			"	\n",
+			"anaconda_get_lines",
+			"sublimeli",
+			"\n            ",
+			"version"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"shit",
+			"= inp",
+			"# ",
+			"sud",
+			"\n            "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "etude.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								195,
+								195
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Anaconda Python Builder",
+	"project": "etude.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"test",
+				"tests/template_test.py"
+			],
+			[
+				"argsg",
+				"etude/utils/argsGenerator.py"
+			],
+			[
+				"mylogg",
+				"etude/utils/mylogging.py"
+			],
+			[
+				"singl",
+				"bin/singlerun.py"
+			],
+			[
+				"sing",
+				"bin/singlerun.py"
+			],
+			[
+				"single",
+				"bin/singlerun.py"
+			],
+			[
+				"",
+				"bin/singlerun.py"
+			],
+			[
+				"experi",
+				"etude/experiments/experiment.py"
+			],
+			[
+				"mylo",
+				"etude/utils/mylogging.py"
+			],
+			[
+				"sys",
+				"etude/utils/sysutils.py"
+			],
+			[
+				"part",
+				"etude/problems/partitioning.py"
+			],
+			[
+				"etude",
+				"Etude/etude/exceptions.py"
+			],
+			[
+				"test_",
+				"Etude/tests/partitioning_tests.py"
+			],
+			[
+				"styl",
+				"Mod/Solar-Bourgne/doc/org/nabelab/solar/DebugTypes.html"
+			],
+			[
+				"experimen",
+				"Etude/etude/utils/experiment.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/projects/m2/fdms/fdms.sublime-project"
+			],
+			[
+				"Packages	",
+				"~/.config/sublime-text-3/Packages/PlainTasks/messages/my-theme.sublime-workspace"
+			]
+		],
+		"width": 687.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

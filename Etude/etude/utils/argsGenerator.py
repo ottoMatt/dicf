@@ -45,7 +45,7 @@ class ArgsGenerator(object):
     # un arg est un dict
 
     def generate(self):
-        return self.main_generate(self.params, self.lArgs)
+        return self.generate_with_args(self.params, self.lArgs)
     """
     def generate(self,dimensions):#
         raise NotImplemented()
@@ -54,7 +54,7 @@ class ArgsGenerator(object):
         raise NotImplemented()
     """
 
-    def main_generate(self, params, lArgs):
+    def generate_with_args(self, params, lArgs):
         accu = lArgs
         for key, value in params.iteritems():
             # on reaffecte res pour propager les nouveaux paramètres
@@ -116,8 +116,9 @@ def main():
     arg1['fname'] = 'gluco'
     argsgen.add_arg(arg1)
     print argsgen.lArgs
-    argsgen.add_dim(
-        'var', ['all', {'max-': [1, 2], 'min-':[4, 5]}], cond="'min-4' in value")
+    argsgen.add_dim('var',
+                    ['all', {'max-': [1, 2], 'min-':[4, 5]}],
+                    cond="'min-4' in value")
     print argsgen.params
     print argsgen.conditions
     res = argsgen.generate()

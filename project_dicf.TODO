@@ -1,0 +1,125 @@
+Project :
+
+ ---- ✄ ----------------------Experiments
+
+ ☐ do generateDependencies for single runner
+
+☐ do generateDependencies for experiment (with **kwargs or *args)
+
+☐ do decorator for logged in facory and test it !! see namespace 
+☐ in TEST :check name of args in test and argsGenerator etc...
+☐?? find how to couple the dimensions 
+
+
+we have a valid field to indicate if it failed to run
+, different from a timed_out problem, it indicates another error (exception, or unexpected behaviour)
+valid { ==1 : isValid; 
+            !=0 : isNotValid:
+              N >= 0 : error Code returned from the launched experiment (caught exception); 
+              N < 0 : ?
+            } 
+☐ do inputs&outputs (filenames) : for each line, we have a valid col
+  ☐ generated_problems : problems (mono car base de multi) with isDepValid col
+  ☐ problems_to_launch :
+  ☐ running_stats_problems
+☐ add field isValid to generated (isDependenciesValid)
+☐ implement generators for reading files
+☐ transfer & refactor all modules  
+    ☐ module cutProblems in problems with facades and scripts
+    ☐ définir module pour fonctions d'écriture I/O  etc...
+
+☐ Add log OF ALL experiments in a configuration file with all parameters + timestamps
+
+---- ✄ -----------------------Analysis
+
+
+☐ Add log OF ALL experiments in a configuration file with all parameters + timestamps 
+  ☐ module time in python ?  
+✔ do stats by adding the mono variants to check if AgentPartitioning has really helped or not... @done (15-09-10 00:09)
+☐ do stats with different algos and number of agents for a canonical problem
+☐ analyse the impact of propvar /method in generate variant & do pivot table graphically
+☐ analyse its influence in the production field and the consequent algorithms...
+ ✔ do group by and mean on timeout and present it with pivot tables... ^^ (what gauvin asked first) (less space thancurves or bars) @done (15-09-09 23:16)
+☐ remarque : le paritionnement est fait sur 
+☐ do stats with  skip/nbMessages/nbInferences
+☐ refactorer pour que chaque segment soit le plus indépendant possible)
+☐Log exhaustively what goes "under the hood" in the module analysis:
+  ☐Log dropped doublon
+  ☐ Log dropped&added columns
+
+ ---- ✄ ----------------------- Problems Generation
+
+ ☐ si status exit == OK (or si METHOD == NEGATED CONJECTURE), add to finishing_RIGHT_mono.csv
+ ☐ write rapport with workflow explained and commands etc...
+ ☐ check aue tptp génère bien des fichiers .sol valides. augmenter le nombre de clauses minimal pour pouvoir distribuer.3
+ ☐ check if SAT problem is sat
+
+☐ Refactor the Trnaslate and cut problems modules 
+   ☐ do facades
+   ☐ do tests
+
+    ---- ✄ -----------------------General
+
+☐ put strings in tripled doublequotes and suppress \n 
+☐ do proper commenting in ENGRISH !! & format strings 
+  ✔ singlerun.py   @done (15-09-12 00:23)
+  ☐ singlerunner 
+☐ at the end, run autoformat pep8 : autopep8 -i --aggressive --aggressive *
+☐ solve problem with the relative path for original .sol contained in .dcf (suppress this, which was modified by me...)
+  ☐ change all paths in all .dcf .... boring to reuse the original data with the good launcher) BEST SOLUTION !!
+  ☐ provide user with choice on which launcher to use.
+  ☐ we assume that in this organization, all files are stored horizontally (more convenient)
+  ☐ if the new launcher raises an exception, then catch it (in java) and suppress the prefix from the file or
+  ☐ agpar(agentparitioning) et tppar(top clause) or obspar(observation) PAR or DIST ??
+  ☐ create proper exceptions and raise them when appropriate
+
+
+
+
+
+
+
+
+
+
+Rapport:
+ ☐ generate UML diagrams for python with pyrevers
+ ☐ écrire un test : query hyptohèses que l'on veut tester, regarder les données, et puis créer de nouvelles expériences : example of workflow
+ ☐ strcuturer rapport et faire rubriques internes, bien faire apparaitew les differenetes etapes
+ ☐ write in Latex from pres:
+     ☐ théorique : formalisme, système, algos
+     ☐ but du stage : étude expérimentale
+     ☐ problématiques rencontrées : reprendre le code d'un stagiaire, utiliser un système complexe peu documenté(boîtes noires), parallelisation pour cluster, test, logging, design with experiments, combinatorial explosion, data tagging, how to manage the data, redundancy, doublons, identifying data with multiple experiments, experiments with iteration, logging experiments, managing interruptions of experiments etc...
+     ☐ architecture du système mise en place
+     ☐ analyses
+     => tout ça nous permet de catégoriser un problème en terme de complexité selon certains paramètres.
+     Et donc pour des problèmes concrets, de les "préparer" pour tester dessus notre système.
+     Dans notre cas, c'est l'éthique.
+
+     ☐ éthique : trolley problème. => solutio retenue par Gauvin (pas publiée mais acceptée)
+     ☐ traduction de ASP ->LPO pour résolution par dicf
+     ☐ et sélection de champs de production et d'algos de paritionnement efficaces
+
+
+
+
+
+
+
+      architecture du système mise en place
+      analyses
+     => tout ça nous permet de catégoriser un problème en terme de omplexité selon certains paramètres.
+     Et donc pour des problèmes concrets, de les "préparer" pour tester dessus otre système.
+     ans notre cas, c'est l'éthique.
+
+
+\section{Structure du projet}
+Dans toute la conception du système, le but sous-tendant tout effort était celui de rendre le système plus intuitif, en séparant les fonctionalités( Logging, remplacement, gestion des fichiers), et de permettre la conception d'expériences de manière rapide et dirigée, sans se soucier de l'organisation des données produites.
+
+ 
+STRUCTYUET TRRE
+Note méthodologique : 
+durant le long de ce projet, au vu de la taille que l'ensemble commencait à prendre, il a vite été rendu évident de la nécessité de strcuturer le projet : (*here show tree of folders*) and explain structure + UML diagrams + ex d'experience
+
+
+UML DIAGRAMS Architecture

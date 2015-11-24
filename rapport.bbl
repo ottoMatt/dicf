@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{Bourgne2011}
+Gauvain Bourgne and Katsumi Inoue.
+\newblock {Partition-based consequence finding}.
+\newblock {\em Proceedings - International Conference on Tools with Artificial
+  Intelligence, ICTAI}, pages 641--648, 2011.
+
+\bibitem{Bourgne2012}
+Gauvain Bourgne and Nicolas Maudet.
+\newblock {Finding new consequences of an observation in a system of agents (
+  Extended Abstract )}.
+\newblock (June):1223--1224, 2012.
+
+\bibitem{Inoue2006}
+Katsumi Inoue, Koji Iwanuma, and Hidetomo Nabeshima.
+\newblock {Consequence finding and computing answers with defaults}.
+\newblock {\em Journal of Intelligent Information Systems}, 26(1):41--58, 2006.
+
+\bibitem{Nabeshima2010}
+Hidetomo Nabeshima, Koji Iwanuma, Katsumi Inoue, and Oliver Ray.
+\newblock {SOLAR: An automated deduction system for consequence finding}.
+\newblock {\em AI Communications}, 23(2-3):183--203, 2010.
+
+\end{thebibliography}

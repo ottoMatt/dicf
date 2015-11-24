@@ -13,11 +13,20 @@ the inputs and outputs will be logged.
 The exception and errors too
 """
 
+
+"""
+
+HOW TO MAKE SURE THAT INFORMATION CARRIED BY EXCCEPTIONS ARE NOT REDONDANT OVER LEVELS !
+
+=> when catching exceptions in the decoratorm log them if specific : first level catching :
+ then when caught, propagate ERROR () and Exception() with special argument ? (kwargs['firstCaught']) to know when to log
+"""
+
 from functools import wraps
 import logging
 import sys
 from logging.handlers import RotatingFileHandler
-import etude.constants as constants
+import etude.constants as csts
 
 
 def format_str(msg):
@@ -46,7 +55,7 @@ class LoggedClass(object):
 
     def __init__(self, logname):
         self.logname = logname
-        LoggedClass.init_root_logger(constants.ROOT_LOGFILENAME)
+        LoggedClass.init_root_logger(csts.ROOT_LOGFILENAME)
         LoggedClass.init_logger(
             self.logname,
             logging.DEBUG,
@@ -74,14 +83,26 @@ class LoggedClass(object):
                     res = func(self, *args, **kwargs)
                     # parse res and if in res you've got the name Exception, raise
                     # an externalError
-                except Exception as exception:
-                    # log this depending on its name
-                    e_name = exception.__class__.__name__
-                    if 'exception' in exception.__class__.__name__.lower():
-                        log.warning(e_name, exc_info=True)
-                    else:  # alors erreur
-                        log.error(e_name, exc_info=True)
-                    raise
+                except Exception as e:
+                    #log exceptions only if it hasnt been already logged
+                    log.warning("KdfsfsfsfKKKKKKKK")
+                    
+                    if e.logged :
+                        log.warning("true")
+                    else:
+                        log.warning("false")
+
+                    if e.logged is False :
+                        e.logged = True
+                        #e.set_exception_logged()
+                        # log level this depending on its name
+                        e_name = e.__class__.__name__
+                        
+                        if 'exception' in e.__class__.__name__.lower():
+                            log.warning(e_name, exc_info=True)
+                        else:  # alors erreur
+                            log.error(e_name, exc_info=True)
+                    raise #passe le même objet exception ? pas de recréation ??
                 if res:
                     log.debug(format_str(res))
                 return res
@@ -93,8 +114,7 @@ class LoggedClass(object):
         logger = logging.getLogger()
         logger.setLevel(logging.DEBUG)
         if len(logger.handlers) != 3:
-            stream_handler = logging.StreamHandler(
-                sys.stderr)  # stderr par défaut
+            stream_handler = logging.StreamHandler(sys.stderr)
             stream_handler.setLevel(logging.WARNING)
             logger.addHandler(stream_handler)
 
@@ -104,7 +124,8 @@ class LoggedClass(object):
 
             file_handler = RotatingFileHandler(logfile, 'a', 1000000, 1)
             file_handler.setLevel(logging.WARNING)
-            file_handler.setFormatter(constants.formatter)
+            formatter = logging.Formatter(csts.fmt)
+            file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         print logger.handlers
 
@@ -115,7 +136,8 @@ class LoggedClass(object):
             logger.setLevel(level)
             file_handler = RotatingFileHandler(logfile, 'a', 1000000, 1)
             file_handler.setLevel(level)
-            file_handler.setFormatter(constants.formatter)
+            formatter = logging.Formatter(csts.fmt)
+            file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         print logger.handlers
 
@@ -170,4 +192,4 @@ def test():
     LoggedClass.init_logger('aux', logging.DEBUG, 'aux.log')
 
     spam(1, 2, 3, t='r')
-a = funciton()
+# a = funciton()

@@ -17,11 +17,9 @@ P2SOL_JAR = TOOLS_PATH + 'p2sol.jar'
 
 CFLAUNCHER_JAR = TOOLS_PATH + 'CFLauncher_9.jar'
 
-#print('WORK DIR: '+os.getcwd() + "\n")
+# print('WORK DIR: '+os.getcwd() + "\n")
 # LOGGING
 ROOT_LOGFILENAME = 'root.stderr.log'
 fmt = '%(asctime)s %(filename)-18s %(levelname)-8s: %(message)s'
-import logging
-formatter = logging.Formatter(fmt)
 
 JAVA_ARGS = ['-d64', '-Xms512m', '-Xmx6g', '-jar']  # replace Heap size max

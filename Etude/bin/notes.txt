@@ -1,0 +1,3 @@
+for a well built python project not meant to be adapted, and to be run with python setup.py install, one should put scripts here.
+
+But since this project is bound to be extended, we prefer to have the scripts bu ran "manually" to facilitate tests and development.

@@ -1,0 +1,977 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"set",
+				"set_exception_logged"
+			],
+			[
+				"l",
+				"logged"
+			],
+			[
+				"except",
+				"exceptions	module"
+			],
+			[
+				"det",
+				"determinant"
+			],
+			[
+				"__",
+				"__init__	function"
+			],
+			[
+				"new",
+				"newWrkDir	statement"
+			],
+			[
+				"Ke",
+				"KeyError	class"
+			],
+			[
+				"stat",
+				"staticmethod	class"
+			],
+			[
+				"genera",
+				"generate_with_args	function"
+			],
+			[
+				"__m",
+				"__name__	class"
+			],
+			[
+				"gen",
+				"genFileDecorator	function"
+			],
+			[
+				"naive_",
+				"naive_short"
+			],
+			[
+				"infile",
+				"infile_path"
+			],
+			[
+				"form",
+				"formatter	statement"
+			],
+			[
+				"No",
+				"NotImplementedError	class"
+			],
+			[
+				"NO",
+				"NotImplemented	class"
+			],
+			[
+				"None",
+				"None	class"
+			],
+			[
+				"save",
+				"save-only"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "etude.sublime-project",
+			"settings":
+			{
+				"buffer_size": 448,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 17110,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Etude/etude/exceptions.py",
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# -*- coding: utf-8 -*-\nfrom nose.tools import *\nimport etude.exceptions as exceptions\nimport logging\nfrom etude.utils.mylogging import LoggedClass\n\n\nclass A(LoggedClass):\n\n    def __init__(self, logname, a):\n        super(self.__class__, self).__init__(logname)\n        self.a = a\n\n    @LoggedClass.logged()\n    def m1(self, a, b):\n        print 'a'\n        print self.a\n        self.log.info('sfsfsf')\n        try:\n            self.subm1(12)\n            self.log.info('111111111111111111')\n        except:\n            pass\n        try:\n            self.subm2(34)\n            self.log.info('22222222222')\n        except:\n            pass\n\n    @LoggedClass.logged()\n    def subm1(self, a):\n        raise exceptions.BaseException('trtrtrt')\n\n    @LoggedClass.logged()\n    def subm2(self, b):\n        raise exceptions.TestError('testError')\n\n\nclass TestPartitioning:\n\n    def setup(self):\n        print (\"TestUM:setup() before each test method\")\n\n    def teardown(self):\n        print (\"TestUM:teardown() after each test method\")\n\n    @classmethod\n    def setup_class(cls):\n        print (\"setup_class() before any methods in this class\")\n\n    @classmethod\n    def teardown_class(cls):\n        print (\"teardown_class() after any methods in this class\")\n\n    def test_LoggedClass(self):\n        print 'test_numbers_5_6()  <============================ actual test code'\n        assert 5 * 6 == 30\n\n        a = A('test_log', 'qwe')\n        a.m1('aa', 'bb')\n        # now check manually if in the root folder of your project, the files\n        # have been properly generated ^^\n        # TODO automate this\n\n    def test_LoggedExperiment(self):\n        pass\n\n\nif __name__ == '__main__':\n    print 'test_numbers_5_6()  <============================ actual test code'\n    assert 5 * 6 == 30\n\n    a = A('test_log', 'qwe')\n    a.m1('aa', 'bb')\n    # now check manually if in the root folder of your project, the files\n    # have been properly generated ^^\n    # TODO automate this\n",
+			"file": "Etude/tests/logging_module_test.py",
+			"file_size": 1972,
+			"file_write_time": 130928751825949368,
+			"settings":
+			{
+				"buffer_size": 1972,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Etude/etude/tests/logging_module_test.py",
+			"settings":
+			{
+				"buffer_size": 2166,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Etude/etude/scripts/my_path.py",
+			"settings":
+			{
+				"buffer_size": 1198,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Etude/bin/singlerun.py",
+			"settings":
+			{
+				"buffer_size": 3922,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "from etude.utils.mylogging import LoggedClass\n\n\"\"\"\n# not gonna work this way...\ndef genFileDecorator(outfile = None, fun = None, replace = False, *funargs):\n    if replace:\n        try:\n            os.remove(outfile)\n            print 'removing old temporary file'\n        except OSError:\n            pass\n    if os.path.isfile(outfile):\n        res = ['file already exist']\n    else:\n        res = fun(*funargs)\n    return res\n\n\nclass FileHandler(LoggedClass):\n    def __init__(self, logname, replace = False):\n        self.logname = logname\n        self.replace = replace\n        pass\n\n    @genFileDecorator\n    @LoggedClass() #take care to closure !\n    def generate_variant(self, filename, ext):\n        \"\"\"\n\"\"\"        args = java_args+[MAKESOLVARIANT_JAR]+['-method='+argsDict['methodVar'],'-len='+argsDict['length'],'-d='+argsDict['depth'],argsDict['infile_path']+argsDict['infile'], argsDict['outfile']]\n        log = jarWrapper(*args)  \n        addToLog(log_file,log)\n\"\"\"        \"\"\"\n        with open(filename + ext, 'w') as csvfile:\n            pass\n\n\nclass TestTemplate:\n    def test_numbers_5_6(self):\n        handler = FileHandler('decoratorTest', replace = True)\n        handler.generate_variant()\n\"\"\"",
+			"file": "Etude/tests/file_decorator_test.py",
+			"file_size": 1214,
+			"file_write_time": 130928684771587430,
+			"settings":
+			{
+				"buffer_size": 1214,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Etude/etude/utils/mylogging.py",
+			"settings":
+			{
+				"buffer_size": 6970,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "lint",
+		"selected_items":
+		[
+			[
+				"lint",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"lin",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"task",
+				"Tasks: New document"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"syntxa ja",
+				"Set Syntax: Java"
+			],
+			[
+				"litin",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"packagere",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package user",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"to",
+				"View: Toggle Side Bar"
+			],
+			[
+				"tas",
+				"Tasks: Complete"
+			],
+			[
+				"ide",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ident",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"lintin",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"tes",
+				"Snippet: self"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"snipp",
+				"Set Syntax: Regular Expressions (Python)"
+			],
+			[
+				"sni",
+				"Snippet: if __name__ == '__main__'"
+			],
+			[
+				"toggle",
+				"View: Toggle Minimap"
+			],
+			[
+				"side bar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sort ",
+				"Sort Lines"
+			],
+			[
+				"sideba",
+				"View: Toggle Side Bar"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"synta",
+				"Set Syntax: OCaml"
+			],
+			[
+				"tests ",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"auto",
+				"Anaconda: Run Project Tests"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"sublime.log_commands(True)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/magma/projects/dicf",
+		"/home/magma/projects/dicf/Etude",
+		"/home/magma/projects/dicf/Etude/bin",
+		"/home/magma/projects/dicf/Etude/etude",
+		"/home/magma/projects/dicf/Etude/etude/experiments",
+		"/home/magma/projects/dicf/Etude/etude/problems",
+		"/home/magma/projects/dicf/Etude/etude/scripts",
+		"/home/magma/projects/dicf/Etude/etude/tests",
+		"/home/magma/projects/dicf/Etude/etude/utils",
+		"/home/magma/projects/dicf/Etude/problems"
+	],
+	"file_history":
+	[
+		"/home/magma/projects/dicf/etude.sublime-project~",
+		"/home/magma/projects/dicf/Etude/etude/exceptions.py",
+		"/home/magma/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/magma/projects/dicf/Etude/etude/utils/decorator.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/dependencies.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/mylogging.py",
+		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner.py",
+		"/home/magma/projects/dicf/Etude/etude/experiments/experiment.py",
+		"/home/magma/projects/dicf/project_dicf.TODO",
+		"/home/magma/projects/dicf/Etude/bin/singlerun.py",
+		"/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/magma/projects/dicf/etude.sublime-project",
+		"/home/magma/mathieu.py",
+		"/home/magma/projects/dicf/Etude/etude/constants.py",
+		"/home/magma/projects/dicf/Etude/tests/template_test.py",
+		"/home/magma/projects/dicf/Etude/tests/cut_problems_test.py",
+		"/home/magma/projects/dicf/Etude/etude/problems/translate_problems.py",
+		"/home/magma/projects/dicf/Etude/etude/problems/cut_problems.py",
+		"/home/magma/projects/dicf/Etude/tests/translate_problems_test.py",
+		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner_backup.py",
+		"/home/magma/general.TODO",
+		"/home/magma/projects/dicf/Etude/tests/logging_module_test.py",
+		"/home/magma/projects/dicf/etude/problems/tranlate_problems.py",
+		"/home/magma/projects/dicf/Etude/tests/argsGenerator_test.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/argsGenerator.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/futils.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/sysutils.py",
+		"/home/magma/generalTasks",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/Default (Linux).sublime-keymap",
+		"/home/magma/projects/dicf/visualisations/statsPresentation_old.ipynb",
+		"/home/magma/projects/dicf/Etude/etude/problems/partitioning.py",
+		"/home/magma/projects/dicf/Etude/root.stderr.log",
+		"/home/magma/projects/dicf/Etude/.spyderproject",
+		"/home/magma/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/magma/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/magma/projects/dicf/Etude/tests/partitioning_tests.py",
+		"/home/magma/.config/sublime-text-3/Packages/Theme - Default/Default.sublime-theme",
+		"/opt/sublime_text/Packages/Theme - Default.sublime-package",
+		"/home/magma/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/PlainTasks/PlainTasks (Linux).sublime-settings",
+		"/home/magma/.config/sublime-text-3/Packages/User/PlainTasks.sublime-settings",
+		"/home/magma/projects/dicf/my-theme.sublime-project",
+		"/home/magma/projects/dicf/Etude/etude/problems/__init__.py",
+		"/home/magma/projects/dicf/Bio_analysis_2-Copy1.ipynb",
+		"/home/magma/projects/dicf/Etude/Clique_2.xml",
+		"/home/magma/projects/dicf/Etude/etude/utils/experiment.py",
+		"/home/magma/projects/dicf/Mod/Solar-Bourgne/doc/org/nabelab/solar/DebugTypes.html",
+		"/home/magma/test.py",
+		"/home/magma/.config/sublime-text-3/Packages/AdvancedNewFile/README.md",
+		"/home/magma/projects/dicf/Etude/etude/problems/singlerunner.py"
+	],
+	"find":
+	{
+		"height": 46.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"                        \n",
+			"\n                    ",
+			"\"\"\"\n",
+			"self",
+			"elem1\nelm1\nelem3",
+			"elem3",
+			" +",
+			" *",
+			"numero",
+			"<",
+			" *",
+			"\";\">",
+			"^\"it.+\\n",
+			"^.+\\n",
+			"^\\n",
+			"BIAS",
+			"score",
+			"Exception",
+			"LoggedClassDec",
+			"main_generate",
+			"testFileDecorator",
+			"class",
+			"there",
+			"    \n",
+			"balanced",
+			"partitions",
+			"\"\"\")",
+			"    \n",
+			"variant",
+			"argument",
+			"parser",
+			"argument",
+			"Argument",
+			"argument",
+			"msg",
+			"argsDict_mono",
+			"etude",
+			"alt+up",
+			"csts",
+			"constants",
+			"220",
+			"alt+shift",
+			"ctrl+alt+shift",
+			"alt+shift",
+			"select_all",
+			"},\n",
+			"keys",
+			"ctrl+1",
+			"up",
+			"set_layou",
+			"setlayout",
+			"screen",
+			"un",
+			"np",
+			"arange",
+			"print",
+			"\nres ",
+			"= ",
+			"res",
+			")\n",
+			"outfile",
+			"outfile_path",
+			"yes",
+			"NOT",
+			"not",
+			"RES",
+			"NOT",
+			"\"\n",
+			"\n\"",
+			"THE NAME",
+			"THE",
+			"THE NAME\n",
+			"THE",
+			"NAME",
+			"res",
+			"def",
+			"s",
+			"	\n",
+			"anaconda_get_lines",
+			"sublimeli",
+			"\n            ",
+			"version"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"shit",
+			"= inp",
+			"# ",
+			"sud",
+			"\n            "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "etude.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								443,
+								443
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17110,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7954,
+								7954
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2975.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Etude/etude/exceptions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								390,
+								390
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Etude/tests/logging_module_test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1853,
+								1853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Etude/etude/tests/logging_module_test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1810,
+								1810
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Etude/etude/scripts/my_path.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Etude/bin/singlerun.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3731,
+								3731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1200.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Etude/tests/file_decorator_test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								511,
+								511
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Etude/etude/utils/mylogging.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 140.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Anaconda Python Builder",
+	"project": "etude.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"exce",
+				"Etude/etude/exceptions.py"
+			],
+			[
+				"to",
+				"project_dicf.TODO"
+			],
+			[
+				"todo",
+				"project_dicf.TODO"
+			],
+			[
+				"mylo",
+				"Etude/etude/utils/mylogging.py"
+			],
+			[
+				"ex",
+				"Etude/etude/exceptions.py"
+			],
+			[
+				"depen",
+				"Etude/etude/utils/dependencies.py"
+			],
+			[
+				"dec",
+				"etude/utils/decorator.py"
+			],
+			[
+				"depende",
+				"etude/utils/dependencies.py"
+			],
+			[
+				"test",
+				"tests/template_test.py"
+			],
+			[
+				"argsg",
+				"etude/utils/argsGenerator.py"
+			],
+			[
+				"mylogg",
+				"etude/utils/mylogging.py"
+			],
+			[
+				"singl",
+				"bin/singlerun.py"
+			],
+			[
+				"sing",
+				"bin/singlerun.py"
+			],
+			[
+				"single",
+				"bin/singlerun.py"
+			],
+			[
+				"",
+				"bin/singlerun.py"
+			],
+			[
+				"experi",
+				"etude/experiments/experiment.py"
+			],
+			[
+				"sys",
+				"etude/utils/sysutils.py"
+			],
+			[
+				"part",
+				"etude/problems/partitioning.py"
+			],
+			[
+				"etude",
+				"Etude/etude/exceptions.py"
+			],
+			[
+				"test_",
+				"Etude/tests/partitioning_tests.py"
+			],
+			[
+				"styl",
+				"Mod/Solar-Bourgne/doc/org/nabelab/solar/DebugTypes.html"
+			],
+			[
+				"experimen",
+				"Etude/etude/utils/experiment.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/projects/dicf/etude.sublime-project"
+			],
+			[
+				"Packages	",
+				"~/.config/sublime-text-3/Packages/PlainTasks/messages/my-theme.sublime-workspace"
+			]
+		],
+		"width": 687.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 272.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

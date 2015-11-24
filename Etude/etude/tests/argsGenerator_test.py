@@ -31,20 +31,9 @@ class TestPartitioning:
         argsgen.add_dim(
             'var', ['all', {'max-': [1, 2], 'min-':[4, 5]}], cond="'min-4' in value")
         argsgen.add_dim('TPdist',
-                        {'naiveshortdist': [1,
-                                            2,
-                                            3,
-                                            4,
-                                            5],
-                         'kmet-': {'uniformshortdist': [1,
-                                                        2,
-                                                        3,
-                                                        4,
-                                                        5]},
-                            'naiveEq-': {'uniformshortdist': [1,
-                                                              2,
-                                                              3,
-                                                              4,
-                                                              5]}})
+                        {'naiveshortdist': [1, 2, 3, 4, 5],
+                         'kmet-': {'uniformshortdist': [1, 2, 3, 4, 5]},
+                         'naiveEq-': {'uniformshortdist': [1, 2, 3, 4, 5]}
+                         })
         res = argsgen.generate()  # only on dimensions
         print res
