@@ -12,7 +12,7 @@ go to ~/projects/dicf/Etude
 
 Yes... Python's weird module system...
 
-if someone wants to put it into production with a proper install, one should cancel the code here to avoid the double imports trap.
+if someone wants to put it into production with a proper install, one should comment the code here to avoid the double imports trap.
 cf. http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html
 """
 #thisdir = os.path.dirname(__file__)

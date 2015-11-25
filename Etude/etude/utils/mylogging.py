@@ -12,14 +12,8 @@ HOW TO USE LOGGER :
 the inputs and outputs will be logged.
 The exception and errors too
 """
-
-
 """
-
-HOW TO MAKE SURE THAT INFORMATION CARRIED BY EXCCEPTIONS ARE NOT REDONDANT OVER LEVELS !
-
-=> when catching exceptions in the decoratorm log them if specific : first level catching :
- then when caught, propagate ERROR () and Exception() with special argument ? (kwargs['firstCaught']) to know when to log
+    definir ici les différents niveaux de log
 """
 
 from functools import wraps
@@ -32,7 +26,6 @@ import etude.constants as csts
 def format_str(msg):
     """
         convert to the right format the element we want to log
-        here we can add later the special format func with lazy evaluation
 
     TODO : use format and lazy evaluation, but here no performance need
     http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
@@ -66,43 +59,40 @@ class LoggedClass(object):
     def logged(name=None):
         """this decorator is customized for logging methods of an object and
         getting the logname attribute from it
+
+        name : name of the attribute whose value is the name of the logger
+
+        remark : this method doesn't have to be inside this class but it's cleaner.
+        To be able to use this method, one should inherit LoggedClass and decorate 
+        only methods of an object.
         """
         def decorate(func):
             logatt_name = name if name else 'logname'  # nom de l'Attribut
-            # permet de changer le nom de l'attribut dans le futur...
-            # on ne s'en occupe pas pour l'instant
+            # no need to worry about that, allows for future extension...
 
             @wraps(func)
             def wrapper(self, *args, **kwargs):
-                logname = self.__dict__[logatt_name]
+                logname = self.__dict__[logatt_name] # looks into the object self the logger name
                 log = logging.getLogger(logname)
                 # log.info(format_str(func.__module__))
                 log.info(format_str(func.__name__))
-                log.debug('args:' + format_str(args) + format_str(kwargs))
+                #log.debug('args:' + format_str(args) + format_str(kwargs))#un peu lourd... on enleve ca pour l'instant
                 try:
                     res = func(self, *args, **kwargs)
-                    # parse res and if in res you've got the name Exception, raise
+                    # TODO : parse res and if in res you've got the name Exception in java style, raise
                     # an externalError
                 except Exception as e:
-                    #log exceptions only if it hasnt been already logged
-                    log.warning("KdfsfsfsfKKKKKKKK")
-                    
-                    if e.logged :
-                        log.warning("true")
-                    else:
-                        log.warning("false")
-
+                    # log exceptions only if it hasnt been already logged
+                    # avoids loggind an exception multiple times 
                     if e.logged is False :
                         e.logged = True
-                        #e.set_exception_logged()
                         # log level this depending on its name
-                        e_name = e.__class__.__name__
-                        
+                        e_name = e.__class__.__name__                        
                         if 'exception' in e.__class__.__name__.lower():
                             log.warning(e_name, exc_info=True)
                         else:  # alors erreur
                             log.error(e_name, exc_info=True)
-                    raise #passe le même objet exception ? pas de recréation ??
+                    raise #passe le même objet exception
                 if res:
                     log.debug(format_str(res))
                 return res
@@ -140,6 +130,7 @@ class LoggedClass(object):
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         print logger.handlers
+
 
 
 def logged(name=None, msg=None):
@@ -185,7 +176,6 @@ def logged(name=None, msg=None):
 def spam(x, y, z, **kwargs):
     # print('Spam!')
     return 'spam!'
-
 
 def test():
     LoggedClass.init_root_logger('root.stderr.log')

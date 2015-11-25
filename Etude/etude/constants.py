@@ -19,7 +19,7 @@ CFLAUNCHER_JAR = TOOLS_PATH + 'CFLauncher_9.jar'
 
 # print('WORK DIR: '+os.getcwd() + "\n")
 # LOGGING
-ROOT_LOGFILENAME = 'root.stderr.log'
+ROOT_LOGFILENAME = 'logs/root.stderr.log'
 fmt = '%(asctime)s %(filename)-18s %(levelname)-8s: %(message)s'
 
 JAVA_ARGS = ['-d64', '-Xms512m', '-Xmx6g', '-jar']  # replace Heap size max

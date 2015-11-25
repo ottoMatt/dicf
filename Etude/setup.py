@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+    not used for now
+"""
 try:
     from setuptools import setup
 except ImportError:
