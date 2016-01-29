@@ -43,7 +43,7 @@ class A(LoggedClass):
 
 
 
-class TestPartitioning:
+class TestLogging:
     def test_LoggedClass(self):
         """
             checks normal logging behaviour :

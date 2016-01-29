@@ -15,7 +15,10 @@ The exception and errors too
 """
     definir ici les différents niveaux de log
 """
-
+"""
+    le parametrage du nom de l'Attribut est trop complexe et inutile, l'enlever...
+    
+"""
 from functools import wraps
 import logging
 import sys
@@ -47,6 +50,7 @@ class LoggedClass(object):
     logname = None
 
     def __init__(self, logname):
+        super(self.LoggedClass, self).__init__() # ! hyper important de faire CA !! refactorer sur tous les objets qui heritent (decorators etc...)
         self.logname = logname
         LoggedClass.init_root_logger(csts.ROOT_LOGFILENAME)
         LoggedClass.init_logger(
@@ -72,19 +76,24 @@ class LoggedClass(object):
 
             @wraps(func)
             def wrapper(self, *args, **kwargs):
+                print 'log'
                 logname = self.__dict__[logatt_name] # looks into the object self the logger name
                 log = logging.getLogger(logname)
                 # log.info(format_str(func.__module__))
                 log.info(format_str(func.__name__))
                 #log.debug('args:' + format_str(args) + format_str(kwargs))#un peu lourd... on enleve ca pour l'instant
                 try:
+                    print 'debut run fun'
                     res = func(self, *args, **kwargs)
                     # TODO : parse res and if in res you've got the name Exception in java style, raise
                     # an externalError
+                    print 'fin run fun'
                 except Exception as e:
+                    print 'exception catchée'
                     # log exceptions only if it hasnt been already logged
                     # avoids loggind an exception multiple times 
                     if e.logged is False :
+                        print 'exception catchéeprintée'
                         e.logged = True
                         # log level this depending on its name
                         e_name = e.__class__.__name__                        
@@ -117,7 +126,6 @@ class LoggedClass(object):
             formatter = logging.Formatter(csts.fmt)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
-        print logger.handlers
 
     @staticmethod
     def init_logger(logname, level, logfile):
@@ -129,7 +137,6 @@ class LoggedClass(object):
             formatter = logging.Formatter(csts.fmt)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
-        print logger.handlers
 
 
 

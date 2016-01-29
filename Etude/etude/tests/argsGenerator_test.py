@@ -4,8 +4,7 @@ from etude.constants import *
 from etude.utils.argsGenerator import ArgsGenerator
 
 
-class TestPartitioning:
-
+class TestArgsGenerator:
     def setup(self):
         print ("TestUM:setup() before each test method")
 

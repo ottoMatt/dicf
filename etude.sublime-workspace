@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"mak",
+				"make_sure_path_exists	function"
+			],
+			[
+				"make",
+				"makedirs	function"
+			],
+			[
+				"new",
+				"new_dir	statement"
+			],
+			[
+				"file",
+				"filenames	forflow"
+			],
+			[
+				"dir",
+				"dirnames	forflow"
+			],
+			[
+				"exception",
+				"exceptions	module"
+			],
+			[
+				"ge",
+				"generate_variant_dynamic	function"
+			],
+			[
+				"de",
+				"decorator	module"
+			],
+			[
 				"set",
 				"set_exception_logged"
 			],
@@ -22,10 +54,6 @@
 			[
 				"__",
 				"__init__	function"
-			],
-			[
-				"new",
-				"newWrkDir	statement"
 			],
 			[
 				"Ke",
@@ -80,80 +108,66 @@
 	"buffers":
 	[
 		{
-			"file": "etude.sublime-project",
+			"file": "Etude/etude/experiments/experiment.py",
 			"settings":
 			{
-				"buffer_size": 448,
+				"buffer_size": 1829,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+			"file": "Etude/etude/problems/cut_problems.py",
 			"settings":
 			{
-				"buffer_size": 17110,
+				"buffer_size": 2521,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Etude/etude/exceptions.py",
+			"file": "/home/magma/copy_files.py",
 			"settings":
 			{
-				"buffer_size": 1193,
+				"buffer_size": 727,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "# -*- coding: utf-8 -*-\nfrom nose.tools import *\nimport etude.exceptions as exceptions\nimport logging\nfrom etude.utils.mylogging import LoggedClass\n\n\nclass A(LoggedClass):\n\n    def __init__(self, logname, a):\n        super(self.__class__, self).__init__(logname)\n        self.a = a\n\n    @LoggedClass.logged()\n    def m1(self, a, b):\n        print 'a'\n        print self.a\n        self.log.info('sfsfsf')\n        try:\n            self.subm1(12)\n            self.log.info('111111111111111111')\n        except:\n            pass\n        try:\n            self.subm2(34)\n            self.log.info('22222222222')\n        except:\n            pass\n\n    @LoggedClass.logged()\n    def subm1(self, a):\n        raise exceptions.BaseException('trtrtrt')\n\n    @LoggedClass.logged()\n    def subm2(self, b):\n        raise exceptions.TestError('testError')\n\n\nclass TestPartitioning:\n\n    def setup(self):\n        print (\"TestUM:setup() before each test method\")\n\n    def teardown(self):\n        print (\"TestUM:teardown() after each test method\")\n\n    @classmethod\n    def setup_class(cls):\n        print (\"setup_class() before any methods in this class\")\n\n    @classmethod\n    def teardown_class(cls):\n        print (\"teardown_class() after any methods in this class\")\n\n    def test_LoggedClass(self):\n        print 'test_numbers_5_6()  <============================ actual test code'\n        assert 5 * 6 == 30\n\n        a = A('test_log', 'qwe')\n        a.m1('aa', 'bb')\n        # now check manually if in the root folder of your project, the files\n        # have been properly generated ^^\n        # TODO automate this\n\n    def test_LoggedExperiment(self):\n        pass\n\n\nif __name__ == '__main__':\n    print 'test_numbers_5_6()  <============================ actual test code'\n    assert 5 * 6 == 30\n\n    a = A('test_log', 'qwe')\n    a.m1('aa', 'bb')\n    # now check manually if in the root folder of your project, the files\n    # have been properly generated ^^\n    # TODO automate this\n",
-			"file": "Etude/tests/logging_module_test.py",
-			"file_size": 1972,
-			"file_write_time": 130928751825949368,
+			"file": "/home/magma/merge_stats.py",
 			"settings":
 			{
-				"buffer_size": 1972,
+				"buffer_size": 8328,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Etude/etude/tests/logging_module_test.py",
+			"file": "Etude/etude/utils/sysutils.py",
 			"settings":
 			{
-				"buffer_size": 2166,
+				"buffer_size": 3462,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Etude/etude/scripts/my_path.py",
+			"file": "project_dicf.TODO",
 			"settings":
 			{
-				"buffer_size": 1198,
+				"buffer_size": 5890,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Etude/bin/singlerun.py",
+			"file": "Etude/etude/tests/file_decorator_test.py",
 			"settings":
 			{
-				"buffer_size": 3922,
+				"buffer_size": 2222,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "from etude.utils.mylogging import LoggedClass\n\n\"\"\"\n# not gonna work this way...\ndef genFileDecorator(outfile = None, fun = None, replace = False, *funargs):\n    if replace:\n        try:\n            os.remove(outfile)\n            print 'removing old temporary file'\n        except OSError:\n            pass\n    if os.path.isfile(outfile):\n        res = ['file already exist']\n    else:\n        res = fun(*funargs)\n    return res\n\n\nclass FileHandler(LoggedClass):\n    def __init__(self, logname, replace = False):\n        self.logname = logname\n        self.replace = replace\n        pass\n\n    @genFileDecorator\n    @LoggedClass() #take care to closure !\n    def generate_variant(self, filename, ext):\n        \"\"\"\n\"\"\"        args = java_args+[MAKESOLVARIANT_JAR]+['-method='+argsDict['methodVar'],'-len='+argsDict['length'],'-d='+argsDict['depth'],argsDict['infile_path']+argsDict['infile'], argsDict['outfile']]\n        log = jarWrapper(*args)  \n        addToLog(log_file,log)\n\"\"\"        \"\"\"\n        with open(filename + ext, 'w') as csvfile:\n            pass\n\n\nclass TestTemplate:\n    def test_numbers_5_6(self):\n        handler = FileHandler('decoratorTest', replace = True)\n        handler.generate_variant()\n\"\"\"",
-			"file": "Etude/tests/file_decorator_test.py",
-			"file_size": 1214,
-			"file_write_time": 130928684771587430,
+			"file": "Etude/etude/tests/argsGenerator_test.py",
 			"settings":
 			{
-				"buffer_size": 1214,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Etude/etude/utils/mylogging.py",
-			"settings":
-			{
-				"buffer_size": 6970,
+				"buffer_size": 1236,
 				"line_ending": "Unix"
 			}
 		}
@@ -335,37 +349,49 @@
 		"/home/magma/projects/dicf/Etude",
 		"/home/magma/projects/dicf/Etude/bin",
 		"/home/magma/projects/dicf/Etude/etude",
+		"/home/magma/projects/dicf/Etude/etude/analysis",
 		"/home/magma/projects/dicf/Etude/etude/experiments",
 		"/home/magma/projects/dicf/Etude/etude/problems",
 		"/home/magma/projects/dicf/Etude/etude/scripts",
 		"/home/magma/projects/dicf/Etude/etude/tests",
 		"/home/magma/projects/dicf/Etude/etude/utils",
-		"/home/magma/projects/dicf/Etude/problems"
+		"/home/magma/projects/dicf/Etude/problems",
+		"/home/magma/projects/dicf/Etude/problems/Bio",
+		"/home/magma/projects/dicf/Etude/problems/SAT",
+		"/home/magma/projects/dicf/Etude/problems/TPTP"
 	],
 	"file_history":
 	[
-		"/home/magma/projects/dicf/etude.sublime-project~",
-		"/home/magma/projects/dicf/Etude/etude/exceptions.py",
-		"/home/magma/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/magma/projects/dicf/Etude/etude/utils/decorator.py",
-		"/home/magma/projects/dicf/Etude/etude/utils/dependencies.py",
-		"/home/magma/projects/dicf/Etude/etude/utils/mylogging.py",
-		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner.py",
+		"/home/magma/general.TODO",
+		"/home/magma/projects/dicf/Etude/etude/tests/file_decorator_test.py",
 		"/home/magma/projects/dicf/Etude/etude/experiments/experiment.py",
-		"/home/magma/projects/dicf/project_dicf.TODO",
-		"/home/magma/projects/dicf/Etude/bin/singlerun.py",
-		"/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
-		"/home/magma/projects/dicf/etude.sublime-project",
-		"/home/magma/mathieu.py",
+		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/decorator.py",
+		"/home/magma/projects/dicf/Etude/etude/utils/mylogging.py",
+		"/home/magma/projects/dicf/Etude/etude/tests/logging_module_test.py",
+		"/home/magma/projects/dicf/Etude/etude/tests/partitioning_tests.py",
+		"/home/magma/projects/dicf/Etude/etude/tests/translate_problems_test.py",
+		"/home/magma/projects/dicf/Etude/etude/tests/argsGenerator_test.py",
+		"/home/magma/projects/dicf/Etude/etude/scripts/my_path.py",
+		"/home/magma/projects/dicf/Etude/etude/scripts/singlerun.py",
 		"/home/magma/projects/dicf/Etude/etude/constants.py",
+		"/home/magma/projects/dicf/etude.sublime-project",
+		"/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/magma/projects/dicf/Etude/etude/exceptions.py",
+		"/home/magma/projects/dicf/Etude/tests/file_decorator_test.py",
+		"/home/magma/projects/dicf/project_dicf.TODO",
+		"/home/magma/projects/dicf/Etude/tests/logging_module_test.py",
+		"/home/magma/projects/dicf/Etude/bin/singlerun.py",
+		"/home/magma/projects/dicf/etude.sublime-project~",
+		"/home/magma/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/magma/projects/dicf/Etude/etude/utils/dependencies.py",
+		"/home/magma/mathieu.py",
 		"/home/magma/projects/dicf/Etude/tests/template_test.py",
 		"/home/magma/projects/dicf/Etude/tests/cut_problems_test.py",
 		"/home/magma/projects/dicf/Etude/etude/problems/translate_problems.py",
 		"/home/magma/projects/dicf/Etude/etude/problems/cut_problems.py",
 		"/home/magma/projects/dicf/Etude/tests/translate_problems_test.py",
 		"/home/magma/projects/dicf/Etude/etude/experiments/singlerunner_backup.py",
-		"/home/magma/general.TODO",
-		"/home/magma/projects/dicf/Etude/tests/logging_module_test.py",
 		"/home/magma/projects/dicf/etude/problems/tranlate_problems.py",
 		"/home/magma/projects/dicf/Etude/tests/argsGenerator_test.py",
 		"/home/magma/projects/dicf/Etude/etude/utils/argsGenerator.py",
@@ -399,7 +425,7 @@
 	],
 	"find":
 	{
-		"height": 46.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -415,6 +441,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"import",
+			" (",
+			"print",
+			"fun",
+			"funargs",
+			"logfile",
+			"      \n",
+			"\")\n",
 			"                        \n",
 			"\n                    ",
 			"\"\"\"\n",
@@ -519,83 +553,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "etude.sublime-project",
+					"file": "Etude/etude/experiments/experiment.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 448,
+						"buffer_size": 1829,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								443,
-								443
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/magma/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17110,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7954,
-								7954
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2975.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Etude/etude/exceptions.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1193,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								390,
-								390
+								77,
+								77
 							]
 						],
 						"settings":
@@ -612,80 +587,79 @@
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "Etude/etude/problems/cut_problems.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2521,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1534,
+								1534
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/magma/copy_files.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 727,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								727,
+								727
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 142.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
 					"buffer": 3,
-					"file": "Etude/tests/logging_module_test.py",
+					"file": "/home/magma/merge_stats.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1972,
+						"buffer_size": 8328,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1853,
-								1853
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Etude/etude/tests/logging_module_test.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2166,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1810,
-								1810
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Etude/etude/scripts/my_path.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1198,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15,
-								15
+								7788,
+								7788
 							]
 						],
 						"settings":
@@ -693,27 +667,87 @@
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2700.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Etude/etude/utils/sysutils.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3462,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1775,
+								1775
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "project_dicf.TODO",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2836,
+								2836
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PlainTasks/PlainTasks.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "Etude/bin/singlerun.py",
+					"file": "Etude/etude/tests/file_decorator_test.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3922,
+						"buffer_size": 2222,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3731,
-								3731
+								1669,
+								1669
 							]
 						],
 						"settings":
@@ -723,57 +757,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1200.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Etude/tests/file_decorator_test.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								511,
-								511
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "Etude/etude/utils/mylogging.py",
+					"buffer": 7,
+					"file": "Etude/etude/tests/argsGenerator_test.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6970,
+						"buffer_size": 1236,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								422,
-								422
+								157,
+								157
 							]
 						],
 						"settings":
@@ -786,7 +790,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -825,7 +829,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 140.0
+		"height": 211.0
 	},
 	"output.find_results":
 	{
@@ -835,7 +839,7 @@
 	"project": "etude.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -845,15 +849,19 @@
 		"selected_items":
 		[
 			[
+				"todo",
+				"project_dicf.TODO"
+			],
+			[
+				"fild",
+				"Etude/etude/tests/file_decorator_test.py"
+			],
+			[
 				"exce",
 				"Etude/etude/exceptions.py"
 			],
 			[
 				"to",
-				"project_dicf.TODO"
-			],
-			[
-				"todo",
 				"project_dicf.TODO"
 			],
 			[
@@ -969,7 +977,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 272.0,
+	"side_bar_width": 378.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

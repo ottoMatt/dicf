@@ -1,11 +1,8 @@
 Project :
-
  ---- ✄ ----------------------Experiments
 
- ☐ do generateDependencies for single runner
-
+☐ do generateDependencies for single runner
 ☐ do generateDependencies for experiment (with **kwargs or *args)
-
 ☐ do decorator for logged in facory and test it !! see namespace 
 ☐ in TEST :check name of args in test and argsGenerator etc...
 ☐?? find how to couple the dimensions 
@@ -27,7 +24,6 @@ valid { ==1 : isValid;
 ☐ transfer & refactor all modules  
     ☐ module cutProblems in problems with facades and scripts
     ☐ définir module pour fonctions d'écriture I/O  etc...
-
 ☐ Add log OF ALL experiments in a configuration file with all parameters + timestamps
 
 ---- ✄ -----------------------Analysis
@@ -72,15 +68,6 @@ valid { ==1 : isValid;
   ☐ if the new launcher raises an exception, then catch it (in java) and suppress the prefix from the file or
   ☐ agpar(agentparitioning) et tppar(top clause) or obspar(observation) PAR or DIST ??
   ☐ create proper exceptions and raise them when appropriate
-
-
-
-
-
-
-
-
-
 
 Rapport:
  ☐ generate UML diagrams for python with pyrevers

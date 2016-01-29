@@ -1,7 +1,27 @@
+# -*- coding: utf-8 -*-
 """
+replace decorator shouldnt be here...
 Decorator
+
+import types
+>>> a.barFighters = types.MethodType( barFighters, a )
+>>> a.barFighters
+
+
+do decorate methods inside an object or return an ensemble of decorated methods..
 """
+
+"""
+    The only way I have found to make decorators truly dynamically parameterized (with a true variable and not a constant set ),
+    is to define the decorated function in am object which holds a certain attribute that the decorator will look into.
+
+    The decorator is static and it signature has no dependencies but its behaviour depends on an attribute held by the object.
+
+    Here we provide an class with decorator as well as a single method decorator wih will og to a default file.
+    """
 from etude.exceptions import SignatureDecoratorError
+from functools import wraps
+import os
 
 class DynamicDecorator(object):
     def __init__(self):
@@ -32,10 +52,13 @@ class DynamicDecorator(object):
 def loggedDecorator():
     pass
 
+#write : replace(True) func
 def replaced(replace):
     def decorate(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
+            print args
+            print kwargs
             '''
             could we do this with a decorator ?
             using named Fields ? ugly ?
@@ -55,8 +78,7 @@ def replaced(replace):
                 outfile = kwargs['outfile']
 
             except KeyError: # key eror
-                raise SignatureDecoratorError(
-)
+                raise SignatureDecoratorError("missing argument \"outfile \" in signature")
             if replace:
                 try:
                     os.remove(outfile)
@@ -65,8 +87,36 @@ def replaced(replace):
                     pass
             if os.path.isfile(outfile):
                 res = ['file already exist']
+                print res
             else:
-                res = fun(*funargs)
+                try :
+                    print 'create file'
+                    res = func(*args, **kwargs)
+                    print 'return res'
+                except Exception as e:
+                    print 'replace exception'
+                    raise
+                
             return res
         return wrapper
     return decorate
+
+
+
+"""
+test in ipython
+def replaced(replace):
+      def decorate(func):
+                @wraps(func)
+                def wrapper(*args, **kwargs):
+                    kwargs['dec'] = 'decorated'
+
+def f1(a, **kwargs):
+    print a
+    try :
+        print kwargs['dec']
+    except:
+        print 'no decorate'
+
+replaced(True)(f1)
+"""

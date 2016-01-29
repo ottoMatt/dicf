@@ -14,7 +14,7 @@ config = {
     'download_url': 'https://github.com/ottoMatt/dcif/archive/master.zip',
     'author_email': 'remy.bin@gmail.com',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': ['nose', 'wrapt'],
     'packages': ['etude','etude/problems','etude/utils'],
     'scripts': [],#'bin/singlerun'],
     'name': 'dicf study'
